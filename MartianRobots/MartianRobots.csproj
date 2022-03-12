@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <!-- Target Build -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>martian_robots</RootNamespace>
+    <RootNamespace>MartianRobots</RootNamespace>
   </PropertyGroup>
 </Project>

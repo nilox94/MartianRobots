@@ -1,5 +1,5 @@
 ﻿using System;
-namespace martian_robots
+namespace MartianRobots
 {
     public class RobotState
     {
