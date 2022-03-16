@@ -1,6 +1,6 @@
 name: Build & Test
 
-on: [push]
+on: [push, pull_request_target]
 
 jobs:
   build-and-test:
@@ -10,8 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # os: [macos-latest, windows-latest, ubuntu-18.04]
-        os: [macos-latest, windows-latest]
+        os: [macos-latest, windows-latest, ubuntu-18.04]
 
     steps:
       - name: Checkout
