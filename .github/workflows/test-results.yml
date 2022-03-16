@@ -1,4 +1,4 @@
-name: CI
+name: Build & Test
 
 on: [push]
 
@@ -64,3 +64,5 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: artifacts/**/*.xml
+          check_name: E2E Test Results
+          report_individual_runs: true
