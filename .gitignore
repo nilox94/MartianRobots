@@ -49,8 +49,8 @@ Generated\ Files/
 TestResult.xml
 nunit-*.xml
 
-# XUnit
-*.trx
+# JUnit
+*.xml
 
 # Build Results of an ATL Project
 [Dd]ebugPS/
@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Mac OS
+.DS_Store

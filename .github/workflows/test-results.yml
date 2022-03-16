@@ -1,0 +1,66 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-and-test:
+    name: Build and Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # os: [macos-latest, windows-latest, ubuntu-18.04]
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0'
+          include-prerelease: true
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget
+
+      - name: Restore Nuget Packages
+        run: dotnet restore
+
+      - name: Build Projects
+        run: dotnet build --no-restore
+
+      - name: Test
+        run: dotnet test --no-build
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: tests-${{ matrix.os }}
+          path: Tests/Report/*.xml
+        # Use always() to always run this step to publish test results when there are test failures  
+        if: always()
+
+  publish-test-results:
+    name: Publish Tests
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Test Results
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: artifacts/**/*.xml
