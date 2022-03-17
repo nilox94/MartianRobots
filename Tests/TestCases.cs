@@ -11,7 +11,7 @@ namespace Tests
         [MemberData(nameof(TestData.Data), MemberType = typeof(TestData))]
         public void FromFile(string name)
         {
-            using var inputReader = new StringReader(File.ReadAllText($"./Data/{name}.in"));
+            using var inputReader = new StringReader(File.ReadAllText($"./data/{name}.in"));
             using var outputWriter = new StringWriter();
 
             Console.SetIn(inputReader);
@@ -19,7 +19,7 @@ namespace Tests
 
             MartianRobots.Program.Main();
 
-            string expected = File.ReadAllText($"./Data/{name}.out");
+            string expected = File.ReadAllText($"./data/{name}.out");
             string actual = outputWriter.ToString();
 
             Assert.Equal(expected, actual);

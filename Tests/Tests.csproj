@@ -25,7 +25,7 @@
 
   <!-- Project Data -->
   <ItemGroup>
-    <None Include="Data/*" CopyToOutputDirectory="PreserveNewest" />  
+    <None Include="data/*" CopyToOutputDirectory="PreserveNewest" />  
   </ItemGroup>
   <!-- Test Report -->
   <PropertyGroup>

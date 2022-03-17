@@ -8,7 +8,7 @@ namespace Tests
     public static class TestData
     {
         public static IEnumerable<object[]> Data => Directory
-            .GetFiles("Data", "*.in")
+            .GetFiles("data", "*.in")
             .Select(p => new []{ Path.GetFileNameWithoutExtension(p) });
     }
 }
