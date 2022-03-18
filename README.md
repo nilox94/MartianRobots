@@ -1,7 +1,16 @@
 # MartianRobots
 [![CI/CD](https://github.com/nilox94/MartianRobots/actions/workflows/test-results.yml/badge.svg)](https://github.com/nilox94/MartianRobots/actions/workflows/test-results.yml)
-![macOS badge](https://badgen.net/badge/icon/macOS?icon=apple&label)
+![Ubuntu badge](https://badgen.net/badge/icon/Ubuntu?icon=terminal&label)
 ![Windows badge](https://badgen.net/badge/icon/Windows?icon=windows&label)
+![macOS badge](https://badgen.net/badge/icon/macOS?icon=apple&label)
+
+## Setup
+Clone and run the project by using
+```
+git clone https://github.com/nilox94/MartianRobots.git
+cd MartianRobots
+dotnet run --project MartianRobots < Tests/Data/default.in
+```
 
 ## Problem Statement
 The problem statement can be found [here](https://github.com/nilox94/MartianRobots/files/8267078/Technical.skills.-.Developer_EN.002.Backend.NET.docx)
