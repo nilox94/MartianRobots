@@ -1,17 +1,16 @@
 name: Build & Test
 
-on: [push, pull_request_target]
+on: [push]
 
 jobs:
-  build-and-test:
-    name: Build and Test (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-
+  run-tests:
     strategy:
-      fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-18.04]
-
+        os:
+          - 'ubuntu-latest'
+          - 'windows-latest'
+          - 'macos-latest'
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,38 +29,29 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: ${{ runner.os }}-nuget
 
-      - name: Restore Nuget Packages
-        run: dotnet restore
-
-      - name: Build Projects
-        run: dotnet build --no-restore
-
       - name: Test
-        run: dotnet test --no-build
-
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        if: ${{ !cancelled() }}
+        id: testAction3a
+        uses: zyborg/dotnet-tests-report@v1
         with:
-          name: tests-${{ matrix.os }}
-          path: Tests/Report/*.xml
-        # Use always() to always run this step to publish test results when there are test failures  
-        if: always()
-
-  publish-test-results:
-    name: Publish Tests
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Download Test Results
-        uses: actions/download-artifact@v2
-        with:
-          path: artifacts
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        with:
-          files: artifacts/**/*.xml
-          check_name: E2E Test Results
-          report_individual_runs: true
+          project_path: Tests
+          report_name: tests_xunit-${{ matrix.os }}
+          report_title: E2E Test (${{ matrix.os }})
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gist_name: dotnet-tests-report_xunit-${{ matrix.os }}.md
+          gist_badge_label: 'XUnit Tests: %Counters_passed%/%Counters_total%'
+          gist_token: ${{ secrets.GIST_TOKEN }}
+          set_check_status_from_test_outcome: true
+          fail_build_on_failed_tests: true
+      
+      - name: Log
+        run: |
+          echo 'Testing on: ${{ matrix.os }}'
+          echo '  xUnit:'
+          echo '    * result_value    = ${{ steps.testAction3a.outputs.result_value }}'
+          echo '    * total_count     = ${{ steps.testAction3a.outputs.total_count }}'
+          echo '    * passed_count    = ${{ steps.testAction3a.outputs.passed_count }}'
+          echo '    * failed_count    = ${{ steps.testAction3a.outputs.failed_count }}'
+          echo '    * gist_report_url = ${{ steps.testAction3a.outputs.gist_report_url }}'
+          echo '    * gist_badge_url  = ${{ steps.testAction3a.outputs.gist_badge_url }}'
+          echo ''

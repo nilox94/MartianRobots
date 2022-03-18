@@ -29,7 +29,7 @@
   </ItemGroup>
   <!-- Test Report -->
   <PropertyGroup>
-    <VSTestLogger>junit</VSTestLogger>
+    <VSTestLogger>trx</VSTestLogger>
     <VSTestResultsDirectory>Report</VSTestResultsDirectory>
   </PropertyGroup>
 </Project>
