@@ -19,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <!-- Linked Projects -->
-    <ProjectReference Include="../MartianRobots/MartianRobots.csproj" />
+    <ProjectReference Include="../Main/Main.csproj" />
   </ItemGroup>
 
   <!-- Project Data -->

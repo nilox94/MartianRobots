@@ -1,7 +1,7 @@
 ﻿using System;
-namespace MartianRobots
+namespace MartianRobots.Components
 {
-    public class PlanetState
+	public class PlanetComponent : IComponent
     {
         public int LengthX { get; set; }
 
@@ -21,3 +21,4 @@ namespace MartianRobots
         }
     }
 }
+
