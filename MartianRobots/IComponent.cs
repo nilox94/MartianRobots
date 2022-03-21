@@ -1,8 +1,8 @@
 ﻿using System;
 namespace MartianRobots
 {
-	public interface IComponent
-	{
-	}
+    public interface IComponent
+    {
+    }
 }
 

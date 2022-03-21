@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MartianRobots.Components
 {
-	public class RobotComponent : IComponent
+    public class RobotComponent : IComponent
     {
         public int X { get; set; }
 
