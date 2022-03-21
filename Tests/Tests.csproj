@@ -1,14 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!-- Target Build -->
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <!-- Project Dependencies -->
   <ItemGroup>
     <!-- NuGet Packages -->
-    <PackageReference Include="JunitXml.TestLogger" Version="3.0.110" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -20,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <!-- Linked Projects -->
-    <ProjectReference Include="../MartianRobots/MartianRobots.csproj" />
+    <ProjectReference Include="../Main/Main.csproj" />
   </ItemGroup>
 
   <!-- Project Data -->

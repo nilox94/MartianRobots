@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!-- Target Build Config -->
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>MartianRobots</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
   <!-- Source Directories -->
   <ItemGroup>
     <Folder Include="Components/" />
     <Folder Include="Systems/" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MartianRobots\MartianRobots.csproj" />
   </ItemGroup>
 </Project>

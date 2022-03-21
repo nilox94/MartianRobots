@@ -17,7 +17,7 @@ namespace Tests
             Console.SetIn(inputReader);
             Console.SetOut(outputWriter);
 
-            MartianRobots.Program.Main();
+            Main.Program.Main();
 
             string expected = File.ReadAllText($"./Data/{name}.out");
             string actual = outputWriter.ToString();

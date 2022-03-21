@@ -1,7 +1,7 @@
 ﻿using System;
-namespace MartianRobots
+namespace MartianRobots.Components
 {
-    public class RobotState
+    public class RobotComponent : IComponent
     {
         public int X { get; set; }
 
@@ -12,3 +12,4 @@ namespace MartianRobots
         public bool Lost { get; set; } = false;
     }
 }
+

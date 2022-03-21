@@ -52,6 +52,9 @@ nunit-*.xml
 # JUnit
 *.xml
 
+# xUnit
+*.trx
+
 # Build Results of an ATL Project
 [Dd]ebugPS/
 [Rr]eleasePS/
