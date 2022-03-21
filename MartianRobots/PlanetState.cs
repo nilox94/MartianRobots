@@ -9,7 +9,11 @@ namespace MartianRobots
 
         public bool[,] ScentMap { get; set; }
 
-        public PlanetState(int lengthX, int lengthY)
+        #pragma warning disable CS8618
+        public PlanetComponent() { }
+        #pragma warning restore CS8618
+
+        public PlanetComponent(int lengthX, int lengthY)
         {
             LengthX = lengthX;
             LengthY = lengthY;
