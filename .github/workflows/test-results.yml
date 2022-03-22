@@ -35,11 +35,11 @@ jobs:
         uses: zyborg/dotnet-tests-report@v1
         with:
           project_path: Tests
-          report_name: tests_xunit-${{ matrix.os }}
+          report_name: Publish Results (${{ matrix.os }})
           report_title: E2E Test (${{ matrix.os }})
           github_token: ${{ secrets.GITHUB_TOKEN }}
           gist_name: dotnet-tests-report_xunit-${{ matrix.os }}.md
-          gist_badge_label: 'XUnit Tests: %Counters_passed%/%Counters_total%'
+          gist_badge_label: 'xUnit Tests: %Counters_passed%/%Counters_total%'
           gist_token: ${{ secrets.GIST_TOKEN }}
           set_check_status_from_test_outcome: true
           fail_build_on_failed_tests: true
